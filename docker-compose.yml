@@ -1,0 +1,32 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - redis-network
+  redis-init:
+    image: redis
+    container_name: redis-init
+    volumes:
+      - ./initialize_redis.sh:/initialize_redis.sh
+    command: sh -c "sleep 5 && chmod +x /initialize_redis.sh && /initialize_redis.sh"
+    depends_on:
+      - redis
+
+  keydb:
+    image: eqalpha/keydb:latest
+    container_name: keydb
+    ports:
+      - "6380:6379" # KeyDB uses the same port as Redis (6379)
+    networks:
+      - keydb-network
+
+networks:
+  redis-network:
+    driver: bridge
+
+  keydb-network:
+    driver: bridge
