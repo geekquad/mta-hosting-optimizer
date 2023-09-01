@@ -1,11 +1,12 @@
 package service
 
 import (
-	"brevo/model"
 	"fmt"
 	"log"
 	"os"
 	"strconv"
+
+	"mta-hosting-optimizer/model"
 )
 
 type IPMetadata struct {
@@ -17,14 +18,8 @@ type Result struct {
 	Hostname string
 }
 
-type Service interface {
-	GetActiveMTAsAboveThreshold() ([]Result, error)
-	GetThresholdFromEnv() int
-}
-
 func GetActiveMTAsAboveThreshold() ([]Result, error) {
 	threshold := GetThresholdFromEnv()
-	log.Println("THRESHOLD", threshold)
 
 	ipConfigs, err := model.GetServerInformation()
 	if err != nil {

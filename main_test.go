@@ -1,8 +1,8 @@
 package main
 
 import (
-	"brevo/base"
 	"fmt"
+	"mta-hosting-optimizer/base"
 	"net/http"
 	"testing"
 	"time"

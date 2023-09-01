@@ -1,8 +1,8 @@
 package model
 
 import (
-	"brevo/base"
 	"log"
+	"mta-hosting-optimizer/base"
 )
 
 type IPConfig struct {

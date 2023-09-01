@@ -1,10 +1,8 @@
 package controller
 
 import (
-	"log"
+	"mta-hosting-optimizer/service"
 	"net/http"
-
-	"brevo/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,9 +12,8 @@ func HealthCheckup(c *gin.Context) {
 }
 
 func GetHostnamesHandler(c *gin.Context) {
-	result, err := service.GetActiveMTAsAboveThreshold()
-	if err != nil {
-		log.Println("Unable to get Active MTAs Above Threshold")
-	}
+
+	result, _ := service.GetActiveMTAsAboveThreshold()
+
 	c.JSON(http.StatusOK, result)
 }

@@ -3,11 +3,11 @@ package main
 import (
 	"os"
 
-	"brevo/base"
-	"brevo/routes"
-
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+
+	"mta-hosting-optimizer/base"
+	"mta-hosting-optimizer/routes"
 )
 
 func init() {

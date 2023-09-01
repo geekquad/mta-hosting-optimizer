@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"brevo/controller"
-
 	"github.com/gin-gonic/gin"
+
+	"mta-hosting-optimizer/controller"
 )
 
 func Handler(r *gin.Engine) {
