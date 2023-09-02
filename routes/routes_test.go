@@ -12,7 +12,7 @@ func TestHandler(t *testing.T) {
 	router := gin.Default()
 	Handler(router)
 
-	req := httptest.NewRequest("GET", "/admin/healthCheckup", nil)
+	req := httptest.NewRequest("GET", "/healthCheckup", nil)
 	w := httptest.NewRecorder()
 
 	router.ServeHTTP(w, req)
