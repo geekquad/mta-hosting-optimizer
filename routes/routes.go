@@ -7,6 +7,6 @@ import (
 )
 
 func Handler(r *gin.Engine) {
-	r.GET("/admin/healthCheckup", controller.HealthCheckup)
+	r.GET("/healthCheckup", controller.HealthCheckup)
 	r.GET("/hostnames", controller.GetHostnamesHandler)
 }
