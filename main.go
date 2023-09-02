@@ -12,8 +12,8 @@ import (
 
 func init() {
 	godotenv.Load()
-	base.InitKeyDB()
-	// base.InitRedis()
+	// base.InitKeyDB()
+	base.InitRedis()
 }
 
 func startServer() {
