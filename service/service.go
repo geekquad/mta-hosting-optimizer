@@ -3,19 +3,13 @@ package service
 import (
 	"fmt"
 	"log"
+	"mta-hosting-optimizer/model"
 	"os"
 	"strconv"
-
-	"mta-hosting-optimizer/model"
 )
 
-type IPMetadata struct {
-	IP    string
-	Index int
-}
-
 type Result struct {
-	Hostname string
+	Hostname string `json:"hostname"`
 }
 
 func GetActiveMTAsAboveThreshold() ([]Result, error) {
@@ -26,26 +20,21 @@ func GetActiveMTAsAboveThreshold() ([]Result, error) {
 		log.Println("Unable to get server information")
 	}
 
-	activeIPs := make(map[string][]IPMetadata)
-	for i, ipConfig := range ipConfigs {
+	activeIPs := make(map[string][]string)
+	for _, ipConfig := range ipConfigs {
 		_, foundHostName := activeIPs[ipConfig.Hostname]
 		if !foundHostName {
-			activeIPs[ipConfig.Hostname] = []IPMetadata{}
+			activeIPs[ipConfig.Hostname] = []string{}
 		}
 
 		if !ipConfig.Active {
 			continue
 		}
 
-		metaData := IPMetadata{
-			IP:    ipConfig.IP,
-			Index: i,
-		}
-
-		activeIPs[ipConfig.Hostname] = append(activeIPs[ipConfig.Hostname], metaData)
+		activeIPs[ipConfig.Hostname] = append(activeIPs[ipConfig.Hostname], ipConfig.IP)
 	}
 
-	var result []Result
+	result := []Result{}
 	for hostname, activeIP := range activeIPs {
 		if len(activeIP) <= threshold {
 			result = append(result, Result{Hostname: hostname})
