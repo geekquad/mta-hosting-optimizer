@@ -26,4 +26,11 @@ jobs:
         go-version: 1.21
 
     - name: Run tests
+      env:
+        REDIS_HOST: localhost
+        REDIS_PORT: 6379
+        KEYDB_HOST: localhost
+        KEYDB_PORT: 6380
       run: go test -cover ./...
+
+
