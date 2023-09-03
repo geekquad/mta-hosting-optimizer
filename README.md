@@ -8,6 +8,59 @@ Currently, there are about 35 physical servers hosting 482 mail transfer agents 
 
 The MTA Hosting Optimizer Service is designed to analyze server information stored in Redis, identify servers with few active MTAs (as per a configurable threshold), and return the results.
 
+## How to get started?
+This structured format allows users to expand each section for detailed instructions as needed.
+
+Follow these steps to set up and run the project:
+
+
+<details>
+  <summary><strong>Step 1: Clone the Project</strong></summary>
+Clone the project repository to your local machine.
+
+```bash
+git clone <repository-url>
+```
+</details>
+<details>
+  <summary><strong>Step 2: Start Docker Compose</strong></summary>
+Navigate to the project directory and start the Docker Compose services in detached mode.
+
+```bash
+cd <project-directory>
+docker-compose up -d
+```
+</details>
+<details>
+  <summary><strong>Step 3: Create an Environment File</strong></summary>
+Create an environment file (.env) from the provided example (.env.example) and configure it with your environment-specific settings.
+
+```bash
+cp .env.example .env
+# Edit the .env file to set your configurations
+```
+</details>
+<details>
+  <summary><strong>Step 4: Run the Application</strong></summary>
+Execute the main application using Go.
+
+```bash
+go run main.go
+```
+</details>
+<details>
+  <summary><strong>Step 5: Check Service Health</strong></summary>
+Check the service health by making a GET request to /healthCheckup. If the response is "OKAY!", the service is running perfectly.
+</details>
+<details>
+  <summary><strong>Step 6: Set Threshold (if needed)</strong></summary>
+If a threshold value is not specified in your .env file, set it to your desired value.
+</details>
+<details>
+  <summary><strong>Step 7: Hit /hostname</strong></summary>
+Make a GET request to /hostname to get the desired result.
+</details>
+
 ## Implementation Details
 
 ### Configuration
