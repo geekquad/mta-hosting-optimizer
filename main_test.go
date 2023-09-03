@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const url = "http://localhost:8080/hostname"
+const url = "http://localhost:8080/hostnames"
 
 func BenchmarkRedisSet(b *testing.B) {
 	base.InitRedis()
